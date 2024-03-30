@@ -13,16 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          repository: laxman-chaudhary/cicd  # Full repository path
-          ref: master  # Branch name
+          repository: laxman-chaudhary/cicd  # Your GitHub repository path
+          ref: main  # Branch name
 
       - name: Deploy code via SSH
         uses: appleboy/ssh-action@master
         with:
-          host: 47.236.248.233
-          username: root
-          password: ${{ secrets.SSH_PASSWORD }}
+          host: 47.236.248.233p  # Replace with your server's IP
+          username: root  # Replace with your username
+          password: ${{ secrets.SSH_PASSWORD }}  # Or use SSH private key
+
+          # Example script to deploy code (modify as per your requirements)
           script: |
-            cd /var/www/html/  # Update this path if needed
-            git pull origin master
-            sudo systemctl restart apache2
+            cd /var/www/html/cicd  # Update this path if needed
+            git pull origin main
+            # Additional deployment steps as needed
+            sudo systemctl restart apache2  # Example: restart Apache service
