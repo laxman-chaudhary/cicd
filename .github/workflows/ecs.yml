@@ -13,12 +13,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      
     - name: Deploy code
       run: |
-        scp -r ./ root@47.236.248.233:/var/www/html/
+        sshpass -p "Laxman007*" scp -r ./ root@47.236.248.233:/var/www/html/
         sshpass -p "Laxman007*" ssh root@47.236.248.233 'service apache2 restart'
+      env:
+        SSHPASS: Laxman007*
