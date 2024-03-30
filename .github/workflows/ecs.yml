@@ -17,7 +17,7 @@ jobs:
           ref: main  # Branch name
 
       - name: Deploy code via SSH
-        uses: appleboy/ssh-action@v0.4.1
+        uses: appleboy/ssh-action@v2
         with:
           host: 47.236.248.233  # Replace with your server's IP
           username: root  # Replace with your username
