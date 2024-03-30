@@ -15,7 +15,7 @@ jobs:
       
     - name: Deploy code
       run: |
-        sshpass -p "Laxman007*" scp -r ./ root@47.236.248.233:/var/www/html/
-        sshpass -p "Laxman007*" ssh root@47.236.248.233 'service apache2 restart'
+        sshpass -p "Laxman007*" scp -o StrictHostKeyChecking=no -r ./ root@47.236.248.233:/var/www/html/
+        sshpass -p "Laxman007*" ssh -o StrictHostKeyChecking=no root@47.236.248.233 'service apache2 restart'
       env:
         SSHPASS: Laxman007*
