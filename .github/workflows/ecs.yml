@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          repository: laxman-chaudhary/midas  # Full repository path
+          ref: master  # Branch name
 
       - name: Deploy code via SSH
         uses: appleboy/ssh-action@master
@@ -20,6 +23,6 @@ jobs:
           username: root
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd /var/www/html/
-            git pull origin main
+            cd /var/www/html/  # Update this path if needed
+            git pull origin master
             sudo systemctl restart apache2
